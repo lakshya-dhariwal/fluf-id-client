@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppLayoutProps) {
     <>
       <div className="">
         <Toaster />
-        <Component {...pageProps} />{" "}
+        {getLayout(<Component {...pageProps} />)}
       </div>{" "}
     </>
   );
