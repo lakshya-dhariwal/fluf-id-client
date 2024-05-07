@@ -1,7 +1,7 @@
 import React from "react";
 import { LandingNavbar } from "../organisms/landingNavbar.component";
 
-function SaasLayout(props: { children: React.ReactNode }) {
+function LandingLayout(props: { children: React.ReactNode }) {
   return (
     <div className="h-screen flex flex-col ">
       <LandingNavbar className="top-2" />
@@ -12,4 +12,4 @@ function SaasLayout(props: { children: React.ReactNode }) {
   );
 }
 
-export default SaasLayout;
+export default LandingLayout;

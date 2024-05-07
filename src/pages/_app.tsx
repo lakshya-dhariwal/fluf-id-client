@@ -1,3 +1,4 @@
+import LandingLayout from "@app/components/layouts/landing.layouts";
 import "@app/styles/globals.css";
 import type { AppLayoutProps } from "next/app";
 import { ReactNode } from "react";
@@ -10,8 +11,9 @@ export default function App({ Component, pageProps }: AppLayoutProps) {
       // if (["/disclaimer"].includes(appProps.router.pathname)) {
       //   return <>{page}</>;
       // }
+      //todo add if saas add saas layout by default
 
-      return <>{page}</>;
+      return <LandingLayout>{page}</LandingLayout>;
     });
 
   return (
