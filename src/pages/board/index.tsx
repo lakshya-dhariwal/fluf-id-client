@@ -8,3 +8,5 @@ function Page() {
 Page.getLayout = function getLayout(page: ReactElement) {
   return <SaasLayout>{page}</SaasLayout>;
 };
+
+export default Page;

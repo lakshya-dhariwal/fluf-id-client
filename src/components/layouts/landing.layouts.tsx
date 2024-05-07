@@ -1,12 +1,23 @@
 import React from "react";
-import { LandingNavbar } from "../organisms/landingNavbar.component";
+import { LandingNavbar } from "../organisms/LandingNavbar.component";
 
 function LandingLayout(props: { children: React.ReactNode }) {
   return (
     <div className="h-screen flex flex-col ">
       <LandingNavbar className="top-2" />
-      <div className="text-black dark:text-white flex-grow h-0 bg-gray-500">
-        Confidentail FHE Identity
+      <div className="flex-grow h-0 bg-white overflow-y-scroll">
+        <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
+          <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          <p className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
+            <div className="h-screen flex flex-row items-center justify-around">
+              <div className="">
+                {" "}
+                <h1>Confidential FHE Identity</h1>
+              </div>
+              <div className=""></div>
+            </div>
+          </p>
+        </div>
       </div>
     </div>
   );
