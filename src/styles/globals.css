@@ -39,7 +39,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply w-[2px] rounded-full bg-primary-7;
+  @apply w-[2px] rounded-full bg-gray-800;
 }
 
 /* Handle on hover */
