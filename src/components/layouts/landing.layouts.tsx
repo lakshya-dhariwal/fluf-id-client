@@ -87,19 +87,13 @@ import { GradientBadge } from "../molecules/GradientBadge.component";
 
 export function AnimatedPinLandingCard() {
   return (
-    <div
-      style={{ fontFamily: "Cal Sans" }}
-      className="  w-full flex items-center justify-center "
-    >
+    <div className="  w-full flex items-center justify-center ">
       <PinContainer title="/launch app" href="/board">
         <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
-          <h3
-            style={{ fontFamily: "Cal Sans" }}
-            className="max-w-xs  !pb-2 !m-0  text-base text-slate-100"
-          >
-            Covenant ID
+          <h3 className="max-w-xs font-mono  !pb-2 !m-0  text-base text-slate-100">
+            fluf_id
           </h3>
-          <div className="text-base !m-0 !p-0 font-normal">
+          <div className="text-base font-mono !m-0 !p-0 font-normal">
             <span className="text-slate-400 font-thin ">
               Your FHE powered encrypted digital identity.
             </span>
