@@ -7,7 +7,7 @@ function LandingLayout(props: { children: React.ReactNode }) {
     <div className="h-screen flex flex-col ">
       <LandingNavbar className="top-2" />
       <div className="flex-grow h-0 bg-white overflow-y-scroll scrollbar-hide">
-        <div className="h-[100vh] relative flex-col  overflow-y-scroll w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] flex ">
+        <div className="h-[100vh] relative flex-col  overflow-y-scroll w-full dark:bg-black text-neutral-200 dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] flex ">
           {/* Radial gradient for the container to give a faded look */}
           {/*  */}
 
@@ -68,6 +68,7 @@ function LandingLayout(props: { children: React.ReactNode }) {
               <GlobeLanding />
             </div>
           </div>
+          <div className="">Footer</div>
         </div>
       </div>
     </div>

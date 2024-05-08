@@ -394,7 +394,7 @@ export function GlobeLanding() {
   ];
 
   return (
-    <div className="flex flex-row items-center justify-center h-screen    relative w-full">
+    <div className="flex flex-row items-center justify-center h-screen  py-10  relative w-full">
       <World data={sampleArcs} globeConfig={globeConfig} />
     </div>
   );
