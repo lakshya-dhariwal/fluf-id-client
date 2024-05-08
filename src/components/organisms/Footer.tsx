@@ -6,9 +6,9 @@ import { SiGoogledocs } from "react-icons/si";
 
 function Footer() {
   return (
-    <div className="relative">
+    <div className="relative bg-black p-[45px] ">
       <span className="absolute -top-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/btn:opacity-40"></span>
-      <div className="flex justify-around flex-col sm:flex-row gap-10 p-[45px] sm:p-[100px] bg-black">
+      <div className="flex justify-around flex-col sm:flex-row gap-10  sm:p-[100px]">
         <div className="font-space">
           <h1 className="text-3xl font-space text-emerald-400">fluf.id</h1>
           <p className="text-sm font-cal text-gray-400 flex flex-row items-center gap-1">
@@ -38,6 +38,9 @@ function Footer() {
             Blog
           </div>
         </div>
+      </div>
+      <div className="text-neutral-400 text-sm mt-4 text-center">
+        built by 🎒 nomads for the 🌏 world
       </div>
     </div>
   );
