@@ -1,6 +1,8 @@
 import React from "react";
+import "cal-sans";
 import { LandingNavbar } from "../organisms/LandingNavbar.component";
 import { PulseBeams } from "../ui/pulse-beam";
+import Footer from "@app/components/organisms/Footer";
 
 function LandingLayout(props: { children: React.ReactNode }) {
   return (
@@ -11,7 +13,7 @@ function LandingLayout(props: { children: React.ReactNode }) {
           {/* Radial gradient for the container to give a faded look */}
           {/*  */}
 
-          <div className="flex min-h-[100vh] relative flex-col  items-center justify-center ">
+          <div className="flex min-h-[100vh] px-3 sm:p-0 relative flex-col  items-center justify-center ">
             <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
             <div className="mt-[20vh] flex-none  inset-0">
               <div className=" inset-x-0  flex justify-center items-center">
@@ -24,7 +26,7 @@ function LandingLayout(props: { children: React.ReactNode }) {
                 </div>
               </div>
             </div>
-            <div className="flex items-center flex-col gap-2 my-5 ">
+            <div className="flex text-center sm:text-left items-center flex-col gap-2 my-5 ">
               <p className="text-4xl sm:text-6xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8 pb-2">
                 Confidential Decentralised Identity
               </p>
@@ -38,7 +40,7 @@ function LandingLayout(props: { children: React.ReactNode }) {
             </div>
           </div>
 
-          <div className="  min-h-[100vh] grid place-content-center grid-cols-2 font-space  justify-around border-neutral-400 text-neutral-300 p-8 rounded-lg m-8 ">
+          <div className="  min-h-[100vh] sm:grid place-content-center grid-cols-2 font-space  justify-around border-neutral-400 text-neutral-300 sm:p-8 rounded-lg m-8 ">
             <div className="flex  flex-col max-w-[800px] min-h-[80vh] justify-center  items-start gap-4">
               <GradientBadge>
                 <h1 className="">coming soon</h1>
@@ -64,11 +66,11 @@ function LandingLayout(props: { children: React.ReactNode }) {
               </div>
             </div>
 
-            <div className="">
+            <div className="hidden sm:block">
               <GlobeLanding />
             </div>
           </div>
-          <div className="">Footer</div>
+          <Footer />
         </div>
       </div>
     </div>
