@@ -7,7 +7,7 @@ function LandingLayout(props: { children: React.ReactNode }) {
     <div className="h-screen flex flex-col ">
       <LandingNavbar className="top-2" />
       <div className="flex-grow h-0 bg-white overflow-y-scroll scrollbar-hide">
-        <div className="h-[100vh] relative flex-col  overflow-y-scroll w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] flex border border-yellow-400">
+        <div className="h-[100vh] relative flex-col  overflow-y-scroll w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] flex ">
           {/* Radial gradient for the container to give a faded look */}
           {/*  */}
 
@@ -40,7 +40,9 @@ function LandingLayout(props: { children: React.ReactNode }) {
 
           <div className="  min-h-[100vh] grid place-content-center grid-cols-2 font-space  justify-around border-neutral-400 text-neutral-300 p-8 rounded-lg m-8 ">
             <div className="flex  flex-col max-w-[800px] min-h-[80vh] justify-center  items-start gap-4">
-              <GradientBadge>coming soon</GradientBadge>
+              <GradientBadge>
+                <h1 className="">coming soon</h1>
+              </GradientBadge>
               <h1 className="text-4xl">
                 FHE Anonymized AD Network with personalization using AI
               </h1>
