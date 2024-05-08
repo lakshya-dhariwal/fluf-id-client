@@ -2,6 +2,9 @@ import LandingLayout from "@app/components/layouts/landing.layouts";
 import "@app/styles/globals.css";
 import type { AppLayoutProps } from "next/app";
 import { ReactNode } from "react";
+import localFont from "next/font/local";
+import "cal-sans";
+
 import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }: AppLayoutProps) {
@@ -17,11 +20,9 @@ export default function App({ Component, pageProps }: AppLayoutProps) {
     });
 
   return (
-    <>
-      <div className="">
-        <Toaster />
-        {getLayout(<Component {...pageProps} />)}
-      </div>{" "}
-    </>
+    <div className={""}>
+      <Toaster />
+      {getLayout(<Component {...pageProps} />)}
+    </div>
   );
 }
