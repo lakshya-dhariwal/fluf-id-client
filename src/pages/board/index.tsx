@@ -4,7 +4,7 @@ import React, { ReactElement, useState } from "react";
 import { generateSixDigitSecret } from "@app/utils/generateSecret";
 import { useAccount } from "wagmi";
 
-function Page() {
+function Board() {
   const { address, isConnected } = useAccount();
   const [pin, setPin] = useState<string>();
   const [generatedPin, setGeneratedPin] = useState("");
@@ -17,39 +17,43 @@ function Page() {
   };
   return (
     <div className="p-4 border flex-row gap-4">
-      {isConnected && (
-        <div>
-          <label>
-            Four-digit Number:
-            <input
-              className="border m-2"
-              type="text"
-              value={pin}
-              onChange={(e) => setPin(e.target.value)}
-              required
-            />
-          </label>
-          <br />
+      <div className="">
+        {isConnected && (
+          <div>
+            <label>
+              Four-digit Number:
+              <input
+                className="border m-2"
+                type="text"
+                value={pin}
+                onChange={(e) => setPin(e.target.value)}
+                required
+              />
+            </label>
+            <br />
 
-          <br />
-          <button className="border" onClick={(e) => handleSubmit(e)}>
-            Generate PIN
-          </button>
-        </div>
-      )}
+            <br />
+            <button className="border" onClick={(e) => handleSubmit(e)}>
+              Generate PIN
+            </button>
+          </div>
+        )}
+      </div>
       <ConnectKitButton />
-      {generatedPin && (
-        <>
-          <h2>Generated PIN:</h2>
-          <p>{generatedPin}</p>
-        </>
-      )}
+      <>
+        {generatedPin && (
+          <>
+            <h2>Generated PIN:</h2>
+            <p>{generatedPin}</p>
+          </>
+        )}
+      </>
     </div>
   );
 }
 
-Page.getLayout = function getLayout(page: ReactElement) {
-  return <SaasLayout>{page}</SaasLayout>;
-};
+// Board.getLayout = function getLayout(Board: ReactElement) {
+//   return <SaasLayout>{Board}</SaasLayout>;
+// };
 
-export default Page;
+export default Board;

@@ -15,11 +15,13 @@ function MyApp({
     Component.getLayout ||
     ((page: ReactNode) => {
       //if saas add saas layout by default
-      if (["/board"].includes(appProps.router.pathname)) {
+      console.log(appProps.router.pathname);
+      if (appProps.router.pathname.startsWith("/board")) {
+        console.log("saas layout");
         return <SaasLayout>{page}</SaasLayout>;
+      } else {
+        return <LandingLayout>{page}</LandingLayout>;
       }
-
-      return <LandingLayout>{page}</LandingLayout>;
     });
 
   return (
