@@ -4,9 +4,11 @@ import { SiGoogleauthenticator } from "react-icons/si";
 import { PiIdentificationBadgeFill } from "react-icons/pi";
 import { IoFingerPrintOutline } from "react-icons/io5";
 import { LiaNetworkWiredSolid } from "react-icons/lia";
+import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { IoDocumentLock } from "react-icons/io5";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { MdAlternateEmail } from "react-icons/md";
 import { MdSdStorage } from "react-icons/md";
 import { useRouter } from "next/router";
 import { ConnectKitButton } from "connectkit";
@@ -23,7 +25,6 @@ function SaasLayout(props: { children: React.ReactNode }) {
     </Web3Provider>
   );
 }
-
 const NAV_LINKS = [
   {
     label: "Identity",
@@ -47,6 +48,30 @@ const NAV_LINKS = [
   },
 ];
 
+const INTEGRATION_LINKS = [
+
+  {
+    label: "FHE Vault",
+    route: "/vault",
+    icon: <MdSdStorage className="text-[18px]" />,
+  },
+  {
+    label: "SDK",
+    route: null,
+    icon: <BiPackage className="text-[18px]" />,
+  },
+  {
+    label: "FHE ENS",
+    route: "/ens",
+    icon: <MdAlternateEmail className="text-[18px]" />,
+  },
+  {
+    label: "Anon Payroll",
+    route: null,
+    icon:<FaMoneyBillTransfer  className="text-[18px]" />,
+  },
+];
+
 const SaasSidebar = () => {
   const { address } = useAccount();
   const router = useRouter();
@@ -64,18 +89,11 @@ const SaasSidebar = () => {
             <SaasLink {...link} key={index} />
           ))}
         </ul>
-        <h1 className="text-[12px] font-semibold text-gray-400 mt-3">DAAPS</h1>
+        <h1 className="text-[12px] font-semibold text-gray-400 mt-3">INTEGRATIONS</h1>
         <ul>
-          <SaasLink
-            route={null}
-            icon={<MdSdStorage className="text-[18px]" />}
-            label={"FHE Vault"}
-          />
-          <SaasLink
-            route={null}
-            icon={<BiPackage className="text-[18px]" />}
-            label={"SDK"}
-          />
+        {INTEGRATION_LINKS.map((link, index) => (
+            <SaasLink {...link} key={index} />
+          ))}
         </ul>
       </div>
       <div className="border-t-[1px] p-5 border-[#EBEBEE] flex items-center justify-center">
