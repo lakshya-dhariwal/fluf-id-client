@@ -5,6 +5,9 @@ import { PiIdentificationBadgeFill } from "react-icons/pi";
 import { IoFingerPrintOutline } from "react-icons/io5";
 import { LiaNetworkWiredSolid } from "react-icons/lia";
 import { IoDocumentLock } from "react-icons/io5";
+import toast from "react-hot-toast";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 function SaasLayout(props: { children: React.ReactNode }) {
   return (
@@ -71,16 +74,30 @@ const SaasLink = (props: {
   label: string;
   route: string | null;
 }) => {
+  const router = useRouter();
   return (
-    <li className="hover:text-emerald-600 border-[1px] border-transparent my-1  hover:border-emerald-400  flex flex-row items-center gap-[8px] hover:bg-emerald-50 rounded-md p-2 text-[#87878E] text-[16px] cursor-pointer">
-      <span>{props.icon} </span>
-      <h1>{props.label}</h1>
-      {!props.route && (
-        <span className="text-green-500 border-emerald-400 px-[5px] py-[1px] h-fit border-[1px] rounded text-xs bg-emerald-50">
-          soon
-        </span>
-      )}
-    </li>
+    <Link
+      href={"/board" + props.route}
+      aria-disabled={!props.route}
+      className={!props.route ? "pointer-events-none" : ''}
+    >
+      <li
+        onClick={() => {
+          if (!props.route) {
+            toast("Feature under development", { icon: "🚧" });
+          }
+        }}
+        className="hover:text-emerald-600 border-[1px] border-transparent my-1  hover:border-emerald-400  flex flex-row items-center gap-[8px] hover:bg-emerald-50 rounded-md p-2 text-[#87878E] text-[16px] cursor-pointer"
+      >
+        <span>{props.icon} </span>
+        <h1>{props.label}</h1>
+        {!props.route && (
+          <span className="text-green-500 border-emerald-400 px-[5px] py-[1px] h-fit border-[1px] rounded text-xs bg-emerald-50">
+            soon
+          </span>
+        )}
+      </li>
+    </Link>
   );
 };
 

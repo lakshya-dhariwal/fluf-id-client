@@ -2,19 +2,22 @@ import LandingLayout from "@app/components/layouts/landing.layouts";
 import "@app/styles/globals.css";
 import type { AppLayoutProps } from "next/app";
 import { ReactNode } from "react";
-import localFont from "next/font/local";
 import "cal-sans";
-
 import { Toaster } from "react-hot-toast";
+import SaasLayout from "@app/components/layouts/saas.layout";
 
-export default function App({ Component, pageProps }: AppLayoutProps) {
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+  ...appProps
+}: AppLayoutProps) {
   const getLayout =
     Component.getLayout ||
     ((page: ReactNode) => {
-      // if (["/disclaimer"].includes(appProps.router.pathname)) {
-      //   return <>{page}</>;
-      // }
-      //todo add if saas add saas layout by default
+      //if saas add saas layout by default
+      if (["/board"].includes(appProps.router.pathname)) {
+        return <SaasLayout>{page}</SaasLayout>;
+      }
 
       return <LandingLayout>{page}</LandingLayout>;
     });
@@ -26,3 +29,5 @@ export default function App({ Component, pageProps }: AppLayoutProps) {
     </div>
   );
 }
+
+export default MyApp;

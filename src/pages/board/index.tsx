@@ -9,7 +9,7 @@ function Page() {
   const [pin, setPin] = useState<string>();
   const [generatedPin, setGeneratedPin] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const pinInt = parseInt(pin as string);
     const secret = generateSixDigitSecret(pinInt, address as string);
@@ -18,7 +18,7 @@ function Page() {
   return (
     <div className="p-4 border flex-row gap-4">
       {isConnected && (
-        <form onSubmit={handleSubmit}>
+        <div>
           <label>
             Four-digit Number:
             <input
@@ -32,10 +32,10 @@ function Page() {
           <br />
 
           <br />
-          <button className="border" type="submit">
+          <button className="border" onClick={(e) => handleSubmit(e)}>
             Generate PIN
           </button>
-        </form>
+        </div>
       )}
       <ConnectKitButton />
       {generatedPin && (
