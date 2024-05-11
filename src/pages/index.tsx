@@ -8,7 +8,7 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
-      <h1>COvalent</h1>
+      <h1>Fluf</h1>
     </main>
   );
 }
