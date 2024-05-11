@@ -5,7 +5,7 @@ import { generateSixDigitSecret } from "@app/utils/generateSecret";
 import { useAccount } from "wagmi";
 
 function Board() {
-  const { address, isConnected } = useAccount();
+  const { address, isConnected ,chain} = useAccount();
   const [pin, setPin] = useState<string>();
   const [generatedPin, setGeneratedPin] = useState("");
 
