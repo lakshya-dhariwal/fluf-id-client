@@ -39,7 +39,6 @@ function Board() {
           </div>
         )}
       </div>
-      <ConnectKitButton />
       <>
         {generatedPin && (
           <>
