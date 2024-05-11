@@ -11,6 +11,7 @@ import { MdSdStorage } from "react-icons/md";
 import { useRouter } from "next/router";
 import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
+import { BiPackage } from "react-icons/bi";
 
 function SaasLayout(props: { children: React.ReactNode }) {
   return (
@@ -69,6 +70,11 @@ const SaasSidebar = () => {
             route={null}
             icon={<MdSdStorage className="text-[18px]" />}
             label={"FHE Vault"}
+          />
+          <SaasLink
+            route={null}
+            icon={<BiPackage className="text-[18px]" />}
+            label={"SDK"}
           />
         </ul>
       </div>
