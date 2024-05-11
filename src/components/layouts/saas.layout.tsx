@@ -49,7 +49,6 @@ const NAV_LINKS = [
 ];
 
 const INTEGRATION_LINKS = [
-
   {
     label: "FHE Vault",
     route: "/vault",
@@ -68,7 +67,7 @@ const INTEGRATION_LINKS = [
   {
     label: "Anon Payroll",
     route: null,
-    icon:<FaMoneyBillTransfer  className="text-[18px]" />,
+    icon: <FaMoneyBillTransfer className="text-[18px]" />,
   },
 ];
 
@@ -89,9 +88,11 @@ const SaasSidebar = () => {
             <SaasLink {...link} key={index} />
           ))}
         </ul>
-        <h1 className="text-[12px] font-semibold text-gray-400 mt-3">INTEGRATIONS</h1>
+        <h1 className="text-[12px] font-semibold text-gray-400 mt-3">
+          INTEGRATIONS
+        </h1>
         <ul>
-        {INTEGRATION_LINKS.map((link, index) => (
+          {INTEGRATION_LINKS.map((link, index) => (
             <SaasLink {...link} key={index} />
           ))}
         </ul>
