@@ -4,9 +4,11 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
 import { HoverBorderGradient } from "../ui/border-gradient";
 import { GradientBadge } from "../molecules/GradientBadge.component";
 import Button from "@app/components/atoms/Button";
+import { useRouter } from "next/router";
 
 export function LandingNavbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const router = useRouter();
   return (
     <div
       className={cn(
@@ -17,7 +19,7 @@ export function LandingNavbar({ className }: { className?: string }) {
       <GradientBadge>
         <span className="relative z-100 text-white  mx-auto  p-2text-xs font-semibold w-full   font-space inline-block py-0.5">
           <div className="flex text-[14px] p-2 mx-2 gap-[50px] font-mono flex-row items-center justify-between">
-            <h1 className="  text-emerald-600">fluf</h1>
+            <h1 className="  text-emerald-600">fluf.id</h1>
             {/* <>
               <div className="mx-5"> */}
             {/* <MenuItem setActive={setActive} active={active} item="Services">
@@ -70,7 +72,10 @@ export function LandingNavbar({ className }: { className?: string }) {
                 </div>
               </MenuItem> */}
             {/* </> */}
-            <button className="bg-emerald-500 border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md">
+            <button
+              className="bg-emerald-500 border-b-[2px] border-r-[2px] border-transparent hover:border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
+              onClick={() => router.push("/board/id")}
+            >
               Launch App
             </button>
           </div>
