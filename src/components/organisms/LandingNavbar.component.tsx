@@ -73,7 +73,7 @@ export function LandingNavbar({ className }: { className?: string }) {
               </MenuItem> */}
             {/* </> */}
             <button
-              className="bg-emerald-500 border-b-[2px] border-r-[2px] border-transparent hover:border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
+              className="bg-emerald-500 border-b-[2px] border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
               onClick={() => router.push("/board/id")}
             >
               Launch App
