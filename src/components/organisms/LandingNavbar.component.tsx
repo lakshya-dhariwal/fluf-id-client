@@ -10,12 +10,12 @@ export function LandingNavbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed top-10 inset-x-0  font-space max-w-2xl justify-center mx-auto z-50 rounded-full    flex space-x-2 items-center   ",
+        "fixed top-10 inset-x-0  font-space max-w-2xl justify-center mx-auto z-50 rounded-full    flex space-x-2 items-center    px-2 ",
         className
       )}
     >
       <GradientBadge>
-        <span className="relative z-100 text-white  mx-auto  p-2text-xs font-semibold w-full    font-space inline-block py-0.5">
+        <span className="relative z-100 text-white  mx-auto  p-2text-xs font-semibold w-full   font-space inline-block py-0.5">
           <div className="flex text-[14px] font-mono flex-row gap-5 items-center justify-between">
             <h1 className="  text-emerald-600">Fluf</h1>
             <>
