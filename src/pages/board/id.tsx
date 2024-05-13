@@ -174,7 +174,7 @@ function Board() {
                   Set up 4 digit passcode
                 </h3>
                 <OtpInput
-                  value={pin}
+                  value={pin ?? ''}
                   onChange={setPin}
                   numInputs={4}
                   renderSeparator={<span className="mx-2">-</span>}
@@ -238,22 +238,9 @@ function Board() {
                         View on Explorer
                       </a>
                     </h3>
-                    <button
-                      className="bg-emerald-500 border-b-[2px] border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
-                      onClick={async () => await deploy()}
-                    >
-                      Create fluf.id
-                    </button>
+
                   </div>
                 </div>
-              )}
-            </>
-
-            <>
-              {contractAddr && (
-                <h3 className="text-sm text-gray-600">
-                  Fluf.id {"<>"} {contractAddr}
-                </h3>
               )}
             </>
           </div>
