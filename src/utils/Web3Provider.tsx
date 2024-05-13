@@ -45,7 +45,7 @@ const config = createConfig(
     chains: [inco],
     transports: {
       // RPC URL for each chain
-      [zama.id]: http(
+      [inco.id]: http(
         `https://devnet.zama.ai`,
       ),
     },

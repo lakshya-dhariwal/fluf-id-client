@@ -4,11 +4,14 @@ import OtpInput from "react-otp-input";
 import { SiGoogleauthenticator } from "react-icons/si";
 import { TbGridScan } from "react-icons/tb";
 import { FaCopy } from "react-icons/fa";
+import { useAccount } from "wagmi";
+import { generateFourDigitSecret } from "@app/utils/generateSecret";
 
 function Authenticator() {
   const [passcode, setPasscode] = useState("");
+  const {address} = useAccount()
   const [verified, setVerified] = useState(false);
-  const [otp, setOTP] = useState<string>("123443344");
+  const [otp, setOTP] = useState<string>("");
   const [seconds, setSeconds] = useState(30);
   const [timestamp, setTimestamp] = useState(0);
   const [generatedPin, setGeneratedPin] = useState("");
@@ -17,9 +20,15 @@ function Authenticator() {
     const regenerateTimestamp = () => {
       const currentTimestamp = Math.floor(Date.now() / 1000);
       const last5TimeStamp = currentTimestamp % 100000;
+      const pin =localStorage.getItem("pin")
+      const pinInt = parseInt(pin as string);
+      const secret = generateFourDigitSecret(pinInt, address as string);
+      // console.log("generated PIN:", secret)
+      setGeneratedPin(secret);
       setTimestamp(currentTimestamp);
-      // setOTP(last5TimeStamp * parseInt(generatedPin));
-      console.log(last5TimeStamp * parseInt(generatedPin));
+      console.log(last5TimeStamp * parseInt(generatedPin))
+      setOTP(`${last5TimeStamp * parseInt(generatedPin)}`);
+      console.log("GENERATED TOTP",last5TimeStamp * parseInt(generatedPin));
     };
     const timer = setInterval(() => {
       if (seconds === 30) {
@@ -71,7 +80,7 @@ function Authenticator() {
                 {otp}{" "}
                 <FaCopy
                   onClick={() => {
-                    window?.navigator.clipboard?.writeText(otp);
+                    window?.navigator.clipboard?.writeText(otp!=="NaN"?otp:"- - -")
                     toast("Copied to clipboard!");
                   }}
                   className="text-emerald-500 cursor-pointer"
@@ -89,7 +98,7 @@ function Authenticator() {
           <OtpInput
             value={passcode}
             onChange={setPasscode}
-            numInputs={6}
+            numInputs={4}
             renderSeparator={<span className="mx-2">-</span>}
             renderInput={(props) => (
               <input

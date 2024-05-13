@@ -33,12 +33,7 @@ function Board() {
     isLoading: wallletIsLoading,
   } = useWalletClient({ chainId: inco.id });
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const pinInt = parseInt(pin as string);
-    const secret = generateFourDigitSecret(pinInt, address as string);
-    setGeneratedPin(secret);
-  };
+ 
 
   const handleValidate = (e: any) => {
     e.preventDefault();
@@ -71,9 +66,9 @@ function Board() {
 
   const deploy = async () => {
     if (!address) return;
+    
     const e = instance.encrypt16(parseInt(generatedPin));
     const final = toHexString(e);
-
     //@ts-ignore
     const hash = await walletClient.deployContract({
       abi: TOTP.abi,
@@ -99,6 +94,18 @@ function Board() {
     setInitilised(true);
   };
 
+  const handleSubmit = (pin: string) => {
+    const pinInt = parseInt(pin);
+    const secret = generateFourDigitSecret(pinInt, address as string);
+    console.log("generated PIN:", secret)
+    setGeneratedPin(secret);
+  };
+
+
+  const passcodeSetup =async (pin: any) => {
+    handleSubmit(pin)
+    localStorage.setItem("pin", pin);
+  };
   useEffect(() => {
     async function fetchInstance() {
       instance = await getInstance();
@@ -136,9 +143,6 @@ function Board() {
     if (pin) setPin(pin);
   }, []);
 
-  const passcodeSetup = (pin: any) => {
-    localStorage.setItem("pin", pin);
-  };
 
   return (
     <div className="p-4  flex-row gap-4">
@@ -159,12 +163,12 @@ function Board() {
               </div>
               <div className="h-full flex flex-col w-full gap-[10px] items-center">
                 <h3 className="text-sm text-gray-600">
-                  Set up 6 digit passcode
+                  Set up 4 digit passcode
                 </h3>
                 <OtpInput
                   value={pin}
                   onChange={setPin}
-                  numInputs={6}
+                  numInputs={4}
                   renderSeparator={<span className="mx-2">-</span>}
                   renderInput={(props) => (
                     <input
@@ -196,76 +200,23 @@ function Board() {
                 </h3>
                 <button
                   className="bg-emerald-500 border-b-[2px] border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
-                  // onClick={() => router.push("/board/id")}
+                 onClick={async () =>await deploy()}
                 >
                   Create fluf.id
                 </button>
               </div>
             </div>
+         <>
+         {
+          contractAddr &&<h3 className="text-sm text-gray-600">
+           Fluf.id {"<>"} {contractAddr}
+        </h3>
+         }
+         </>    
           </div>
         )}
       </div>
-      <div className="">
-        {isConnected && (
-          <div>
-            <label>
-              Four-digit Number:
-              <input
-                className="border m-2"
-                type="text"
-                value={pin}
-                onChange={(e) => setPin(e.target.value)}
-                required
-              />
-            </label>
-            <br />
 
-            <br />
-            <button className="border" onClick={(e) => handleSubmit(e)}>
-              Generate PIN
-            </button>
-          </div>
-        )}
-      </div>
-      <>
-        {generatedPin && (
-          <>
-            <h2>Generated PIN:</h2>
-            <p>{generatedPin}</p>
-
-            <button className="border" onClick={() => deploy()}>
-              Create Fluf ID
-            </button>
-          </>
-        )}
-        {contractAddr && <p>{contractAddr}</p>}
-        {/* {initlised && contractAddr && {OTP}} */}
-      </>
-
-      <>
-        {initlised && (
-          <>
-            <div>
-              <label>
-                Four-digit Number for validation
-                <input
-                  className="border m-2"
-                  type="text"
-                  value={_input}
-                  onChange={(e) => setInput(e.target.value)}
-                  required
-                />
-              </label>
-              <br />
-
-              <br />
-              <button className="border" onClick={(e) => handleValidate(e)}>
-                validater
-              </button>
-            </div>
-          </>
-        )}
-      </>
     </div>
   );
 }
