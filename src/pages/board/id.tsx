@@ -19,7 +19,7 @@ import { MdOutlineDone } from "react-icons/md";
 let instance: FhevmInstance;
 function Board() {
   const { address, isConnected, chain } = useAccount();
-  const [pin, setPin] = useState<string>();
+  const [pin, setPin] = useState<string | null>(localStorage.getItem("pin"));
   const [generatedPin, setGeneratedPin] = useState("");
   const [contractAddr, setContractAddr] = useState<string | null>(
     localStorage.getItem("idContract")
@@ -161,7 +161,7 @@ function Board() {
                 <div
                   className={`p-[10px] text-2xl   cursor-pointer rounded-full border-[#464f5e] text-[#464f5e] border-[2px] `}
                 >
-                  {localStorage.getItem("passcode") ? (
+                  {localStorage.getItem("pin") ? (
                     <MdOutlineDone />
                   ) : (
                     <PiPasswordFill />
