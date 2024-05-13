@@ -42,7 +42,7 @@ export const inco: Chain = {
 const config = createConfig(
   getDefaultConfig({
     // Your dApps chains
-    chains: [zama,inco],
+    chains: [inco],
     transports: {
       // RPC URL for each chain
       [zama.id]: http(
