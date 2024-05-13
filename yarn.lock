@@ -1112,17 +1112,17 @@
     "@swc/counter" "^0.1.3"
     tslib "^2.4.0"
 
-"@tanstack/query-core@5.35.5":
-  version "5.35.5"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.35.5.tgz#7b4100dc9cc7fee314b8a1bcbf502a236d43ffe3"
-  integrity sha512-OMWvlEqG01RfGj+XZb/piDzPp0eZkkHWSDHt2LvE/fd1zWburP/xwm0ghk6Iv8cuPlP+ACFkZviKXK0OVt6lhg==
+"@tanstack/query-core@5.36.0":
+  version "5.36.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.36.0.tgz#905bd05b6a73e58d70d95912d84e979ed865ab6a"
+  integrity sha512-B5BD3pg/mztDR36i77hGcyySKKeYrbM5mnogOROTBi1SUml5ByRK7PGUUl16vvubvQC+mSnqziFG/VIy/DE3FQ==
 
-"@tanstack/react-query@^5.29.2":
-  version "5.35.5"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.35.5.tgz#d41a087d58f42418824fa04aaca00ba93c99075c"
-  integrity sha512-sppX7L+PVn5GBV3In6zzj0zcKfnZRKhXbX1MfIfKo1OjIq2GMaopvAFOP0x1bRYTUk2ikrdYcQYOozX7PWkb8A==
+"@tanstack/react-query@^5.35.5":
+  version "5.36.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.36.0.tgz#680cb1490d8b823ec7185e1a97065241cda2ea67"
+  integrity sha512-BATvtM0rohwg7pRHUnxgeDiwLWRGZ8OM/4y8LImHVpecQWoH6Uhytu3Z8YV6V7hQ1sMQBFcUrGE1/e4MxR6YiA==
   dependencies:
-    "@tanstack/query-core" "5.35.5"
+    "@tanstack/query-core" "5.36.0"
 
 "@turf/boolean-point-in-polygon@^6.5":
   version "6.5.0"
@@ -3282,7 +3282,7 @@ ethereum-cryptography@^2.0.0:
     "@scure/bip32" "1.3.3"
     "@scure/bip39" "1.2.2"
 
-ethers@^6.12.1, ethers@^6.6.4:
+ethers@^6.6.4:
   version "6.12.1"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.12.1.tgz#517ff6d66d4fd5433e38e903051da3e57c87ff37"
   integrity sha512-j6wcVoZf06nqEcBbDWkKg8Fp895SS96dSnTCjiXT+8vt2o02raTn4Lo9ERUuIVU5bAjoPYeA+7ytQFexFmLuVw==
@@ -5335,6 +5335,11 @@ react-native-webview@^11.26.0:
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
+
+react-otp-input@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-otp-input/-/react-otp-input-3.1.1.tgz#910169629812c40a614e6c175cc2c5f36102bb61"
+  integrity sha512-bjPavgJ0/Zmf/AYi4onj8FbH93IjeD+e8pWwxIJreDEWsU1ILR5fs8jEJmMGWSBe/yyvPP6X/W6Mk9UkOCkTPw==
 
 react-reconciler@^0.27.0:
   version "0.27.0"

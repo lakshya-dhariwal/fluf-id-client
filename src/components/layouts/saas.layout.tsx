@@ -61,7 +61,7 @@ const INTEGRATION_LINKS = [
   },
   {
     label: "FHE ENS",
-    route: "/ens",
+    route: null,
     icon: <MdAlternateEmail className="text-[18px]" />,
   },
   {
