@@ -209,7 +209,7 @@ function Board() {
                   Create confidential decntralized id on Zama testnet
                 </h3>
                 <button
-                  className="bg-emerald-500 border-b-[2px] mb-4 border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
+                  className="bg-emerald-500 border-b-[2px] mb-[45px] border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
                   onClick={async () => await deploy()}
                 >
                   Create fluf.id
