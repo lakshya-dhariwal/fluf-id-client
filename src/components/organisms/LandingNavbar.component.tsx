@@ -4,9 +4,11 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
 import { HoverBorderGradient } from "../ui/border-gradient";
 import { GradientBadge } from "../molecules/GradientBadge.component";
 import Button from "@app/components/atoms/Button";
+import { useRouter } from "next/router";
 
 export function LandingNavbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const router = useRouter();
   return (
     <div
       className={cn(
@@ -16,11 +18,11 @@ export function LandingNavbar({ className }: { className?: string }) {
     >
       <GradientBadge>
         <span className="relative z-100 text-white  mx-auto  p-2text-xs font-semibold w-full   font-space inline-block py-0.5">
-          <div className="flex text-[14px] font-mono flex-row gap-5 items-center justify-between">
-            <h1 className="  text-emerald-600">Fluf</h1>
-            <>
-              <div className="mx-5">
-                <MenuItem setActive={setActive} active={active} item="Services">
+          <div className="flex text-[14px] p-2 mx-2 gap-[50px] font-mono flex-row items-center justify-between">
+            <h1 className="  text-emerald-600">fluf.id</h1>
+            {/* <>
+              <div className="mx-5"> */}
+            {/* <MenuItem setActive={setActive} active={active} item="Services">
                   <div className="flex flex-col space-y-4 text-sm">
                     <HoveredLink href="/web-dev">Web Development</HoveredLink>
                     <HoveredLink href="/interface-design">
@@ -68,9 +70,14 @@ export function LandingNavbar({ className }: { className?: string }) {
                   <HoveredLink href="/team">Team</HoveredLink>
                   <HoveredLink href="/enterprise">Enterprise</HoveredLink>
                 </div>
-              </MenuItem>
-            </>
-            <h1> Launch App</h1>
+              </MenuItem> */}
+            {/* </> */}
+            <button
+              className="bg-emerald-500 border-b-[2px] border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
+              onClick={() => router.push("/board/id")}
+            >
+              Launch App
+            </button>
           </div>
           {/* <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/btn:opacity-40"></span> */}
         </span>{" "}

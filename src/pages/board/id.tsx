@@ -195,8 +195,10 @@ function Board() {
   );
 }
 
+
 // Board.getLayout = function getLayout(Board: ReactElement) {
 //   return <SaasLayout>{Board}</SaasLayout>;
 // };
 
 export default Board;
+
