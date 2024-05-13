@@ -11,15 +11,19 @@ import { zama, inco } from "@app/utils/Web3Provider";
 import { PiPasswordFill } from "react-icons/pi";
 import { waitForTransactionReceipt, createConfig, http } from "@wagmi/core";
 import { TOTP } from "@app/utils/TOTPConfig";
+import { IoIosDoneAll } from "react-icons/io";
 import { toHexString } from "@app/utils/utils";
 import { readContract } from "@wagmi/core";
+import { MdOutlineDone } from "react-icons/md";
 
 let instance: FhevmInstance;
 function Board() {
   const { address, isConnected, chain } = useAccount();
   const [pin, setPin] = useState<string>();
   const [generatedPin, setGeneratedPin] = useState("");
-  const [contractAddr, setContractAddr] = useState<string>();
+  const [contractAddr, setContractAddr] = useState<string | null>(
+    localStorage.getItem("idContract")
+  );
   const [encryptedData, setEncryptedData] = useState("");
   const [OTP, setOTP] = useState(0);
   const [timestamp, setTimestamp] = useState(0);
@@ -32,8 +36,6 @@ function Board() {
     isError,
     isLoading: wallletIsLoading,
   } = useWalletClient({ chainId: inco.id });
-
- 
 
   const handleValidate = (e: any) => {
     e.preventDefault();
@@ -66,7 +68,7 @@ function Board() {
 
   const deploy = async () => {
     if (!address) return;
-    
+
     const e = instance.encrypt16(parseInt(generatedPin));
     const final = toHexString(e);
     //@ts-ignore
@@ -90,6 +92,8 @@ function Board() {
     );
     console.log(transaction.contractAddress);
     //TODO: api call to store it in DB
+    const idContract = transaction.contractAddress as string;
+    localStorage.setItem("idContract", idContract);
     setContractAddr(transaction.contractAddress as string);
     setInitilised(true);
   };
@@ -97,13 +101,12 @@ function Board() {
   const handleSubmit = (pin: string) => {
     const pinInt = parseInt(pin);
     const secret = generateFourDigitSecret(pinInt, address as string);
-    console.log("generated PIN:", secret)
+    console.log("generated PIN:", secret);
     setGeneratedPin(secret);
   };
 
-
-  const passcodeSetup =async (pin: any) => {
-    handleSubmit(pin)
+  const passcodeSetup = async (pin: any) => {
+    handleSubmit(pin);
     localStorage.setItem("pin", pin);
   };
   useEffect(() => {
@@ -143,7 +146,6 @@ function Board() {
     if (pin) setPin(pin);
   }, []);
 
-
   return (
     <div className="p-4  flex-row gap-4">
       <h1 className="text-2xl text-gray-700 flex flex-row items-center gap-2 font-mono font-semibold">
@@ -156,8 +158,14 @@ function Board() {
           <div className="flex  flex-col w-full mx-2 my-5">
             <div className="w-full gap-4 flex flex-row">
               <div className="flex flex-col flex-grow">
-                <div className="p-[10px] text-2xl   cursor-pointer rounded-full border-[#464f5e] text-[#464f5e] border-[2px]">
-                  <PiPasswordFill />
+                <div
+                  className={`p-[10px] text-2xl   cursor-pointer rounded-full border-[#464f5e] text-[#464f5e] border-[2px] `}
+                >
+                  {localStorage.getItem("passcode") ? (
+                    <MdOutlineDone />
+                  ) : (
+                    <PiPasswordFill />
+                  )}
                 </div>
                 <div className="w-[1px] h-full mx-auto flex-grow bg-[#464f5e]"></div>
               </div>
@@ -190,33 +198,67 @@ function Board() {
             <div className="w-full gap-4 flex flex-row">
               <div className="flex  flex-col flex-grow">
                 <div className="p-[10px] text-2xl   cursor-pointer rounded-full border-[#464f5e] text-[#464f5e] border-[2px]">
-                  <FaIdCard />
+                  {!contractAddr ? <FaIdCard /> : <MdOutlineDone />}
                 </div>
-                {/* <div className='w-[1px] h-full mx-auto flex-grow bg-[#464f5e]'></div> */}
+                {contractAddr && (
+                  <div className="w-[1px] h-full mx-auto flex-grow bg-[#464f5e]"></div>
+                )}
               </div>
               <div className="h-full flex flex-col w-full gap-[10px] items-center">
                 <h3 className="text-sm text-gray-600">
                   Create confidential decntralized id on Zama testnet
                 </h3>
                 <button
-                  className="bg-emerald-500 border-b-[2px] border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
-                 onClick={async () =>await deploy()}
+                  className="bg-emerald-500 border-b-[2px] mb-4 border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
+                  onClick={async () => await deploy()}
                 >
                   Create fluf.id
                 </button>
               </div>
             </div>
-         <>
-         {
-          contractAddr &&<h3 className="text-sm text-gray-600">
-           Fluf.id {"<>"} {contractAddr}
-        </h3>
-         }
-         </>    
+
+            <>
+              {contractAddr && (
+                <div className="w-full gap-4 flex flex-row">
+                  <div className="flex  flex-col flex-grow">
+                    <div className="p-[10px] text-2xl   cursor-pointer rounded-full border-[#464f5e] text-[#464f5e] border-[2px]">
+                      <IoIosDoneAll />
+                    </div>
+
+                    {/* <div className="w-[1px] h-full mx-auto flex-grow bg-[#464f5e]"></div> */}
+                  </div>
+                  <div className="h-full flex flex-col w-full gap-[10px] items-center">
+                    <h3 className="text-sm text-gray-600 text-center">
+                      fluf.id creation complete! <br />
+                      <a
+                        target="_blank"
+                        className="text-emerald-500"
+                        href={`https://explorer.testnet.inco.org/address/${contractAddr}`}
+                      >
+                        View on Explorer
+                      </a>
+                    </h3>
+                    <button
+                      className="bg-emerald-500 border-b-[2px] border-r-[2px] border-emerald-600 text-gray-700 p-[10px] py-[8px] rounded-md"
+                      onClick={async () => await deploy()}
+                    >
+                      Create fluf.id
+                    </button>
+                  </div>
+                </div>
+              )}
+            </>
+
+            <>
+              {contractAddr && (
+                <h3 className="text-sm text-gray-600">
+                  Fluf.id {"<>"} {contractAddr}
+                </h3>
+              )}
+            </>
           </div>
         )}
       </div>
-
     </div>
   );
 }
