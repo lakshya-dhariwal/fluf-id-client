@@ -1,10 +1,11 @@
 import LandingLayout from "@app/components/layouts/landing.layouts";
 import "@app/styles/globals.css";
 import type { AppLayoutProps } from "next/app";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import "cal-sans";
 import { Toaster } from "react-hot-toast";
 import SaasLayout from "@app/components/layouts/saas.layout";
+import { init } from "@app/utils/fhevm";
 
 function MyApp({
   Component,
@@ -23,6 +24,17 @@ function MyApp({
         return <LandingLayout>{page}</LandingLayout>;
       }
     });
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    init()
+      .then(() => {
+        setIsInitialized(true);
+      })
+      .catch(() => setIsInitialized(false));
+  }, []);
+
+  if (!isInitialized) return null;
 
   return (
     <div className={""}>

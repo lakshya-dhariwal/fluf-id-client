@@ -16,6 +16,8 @@
     "cal-sans": "^1.0.1",
     "clsx": "^2.1.1",
     "connectkit": "^1.7.3",
+    "ethers": "^6.6.4",
+    "fhevmjs": "^0.4.0-3",
     "framer-motion": "^11.1.9",
     "lucide-react": "^0.378.0",
     "mini-svg-data-uri": "^1.4.4",
@@ -29,7 +31,7 @@
     "three": "^0.164.1",
     "three-globe": "^2.31.0",
     "viem": "2.x",
-    "wagmi": "^2.8.6"
+    "wagmi": "^2.5.20"
   },
   "devDependencies": {
     "@types/node": "^20",
